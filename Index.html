@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Style.css">
+
+    <title>JavaScript Final Task 1</title>
+</head>
+<body>
+    <script>
+
+        function Addition(){
+            let num1 = document.getElementById("n1").value;
+            let num2 = document.getElementById("n2").value;
+            add = parseInt(num1) + parseInt(num2);
+            document.getElementById("result").value = add;
+        }
+
+        function Subtraction(){
+            let num1 = document.getElementById("n1").value;
+            let num2 = document.getElementById("n2").value;
+            sub = parseInt(num1) - parseInt(num2);
+            document.getElementById("result").value = sub;
+        }
+
+        function Multiplication(){
+            let num1 = document.getElementById("n1").value;
+            let num2 = document.getElementById("n2").value;
+            multiply = parseInt(num1) * parseInt(num2);
+            document.getElementById("result").value = multiply;
+        }
+
+        function Divide(){
+            let num1 = document.getElementById("n1").value;
+            let num2 = document.getElementById("n2").value;
+            div = parseInt(num1) / parseInt(num2);
+            document.getElementById("result").value = div;
+        }
+
+        function clearData(){
+            document.getElementById("n1").value = "";
+            document.getElementById("n2").value = "";
+            document.getElementById("result").value = "";
+            document.getElementById("about").innerHTML = "";
+        }
+
+        function About(){
+            document.getElementById("about").innerHTML = alert("Work of Contreras John Mark P.");
+        }
+    </script>
+    <div class="calculator">
+
+        <table>
+            <tr>
+                <td>First Number:</td>
+                <td><input type="text" size="10" id="n1"></td>
+            </tr>
+            <tr>
+                <td>Second Number:</td>
+                <td><input type="text" size="10" id="n2"></td>
+            </tr>
+            <tr>
+                <td>RESULT:</td>
+                <td><input type="text" size="10" id="result" disabled></td>
+            </tr>
+        </table>
+
+        <button onclick="Addition()">Addition</button>
+            <button onclick="Subtraction()">Subtraction</button>
+            <button onclick="Multiplication()">Multiply</button>
+            <button onclick="Divide()">Divide</button>
+            <button onclick="clearData()">Clear</button>
+            <button onclick="About()">About</button>
+    </div>
+</body>
+</html>
