@@ -5,74 +5,121 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./Style.css">
-
-    <title>JavaScript Final Task 1</title>
+    <title>Javascript Final Task 2</title>
 </head>
 <body>
-    <script>
-
-        function Addition(){
-            let num1 = document.getElementById("n1").value;
-            let num2 = document.getElementById("n2").value;
-            add = parseInt(num1) + parseInt(num2);
-            document.getElementById("result").value = add;
+    <script type="text/Javascript">
+        const dollarSign = "$";
+        let item = 0;
+        function Increment(){
+            item += 1;
+            document.getElementById("items").value = item;
         }
 
-        function Subtraction(){
-            let num1 = document.getElementById("n1").value;
-            let num2 = document.getElementById("n2").value;
-            sub = parseInt(num1) - parseInt(num2);
-            document.getElementById("result").value = sub;
+        function Decrement(){
+            item -= 1;
+            document.getElementById("items").value = item;
+            if (item === 0) {
+                item == item++;
+            }
+        }
+        
+        
+        function CheckOut() {
+            let totalItem = document.getElementById("items").value;
+            const product = 15.97;
+            const productTotal = parseFloat(product) * parseFloat(totalItem);
+            document.getElementById("item").innerHTML = "Items" + "("+totalItem+")";
+            document.getElementById("total").innerHTML = dollarSign + productTotal.toFixed(2);
+            
+            const SPfee = 4.99;
+            document.getElementById("SPfee").innerHTML = dollarSign + SPfee;
+
+            totalBeforeTax = parseFloat(SPfee) + parseFloat(productTotal);
+            document.getElementById("TotalBeforeTax").innerHTML = dollarSign+totalBeforeTax.toFixed(2);
+
+            EstimatedTax = (parseFloat(totalBeforeTax) / 100) * 10;
+            document.getElementById("EstimatedTax").innerHTML = dollarSign + EstimatedTax.toFixed(2);
+
+            FinalTotal = parseFloat(totalBeforeTax) + parseFloat(EstimatedTax);
+            document.getElementById("FinalTotal").innerHTML = dollarSign + FinalTotal.toFixed(2);
         }
 
-        function Multiplication(){
-            let num1 = document.getElementById("n1").value;
-            let num2 = document.getElementById("n2").value;
-            multiply = parseInt(num1) * parseInt(num2);
-            document.getElementById("result").value = multiply;
+        function DeleteData(){
+            var inputs = document.querySelectorAll('input[type="text"]');
+            for(var i = 0; i < inputs.length; i++) {
+            inputs[i].value = "";
+            }
+            item = 0;
+            document.getElementById("item").innerHTML = "";
+            document.getElementById("total").innerHTML = "";
+            document.getElementById("Sfee").innerHTML = "";
+            document.getElementById("SPfee").innerHTML = "";
+            document.getElementById("TotalBeforeTax").innerHTML = "";
+            document.getElementById("EstimatedTax").innerHTML = "";
+            document.getElementById("FinalTotal").innerHTML = "";
         }
+        
 
-        function Divide(){
-            let num1 = document.getElementById("n1").value;
-            let num2 = document.getElementById("n2").value;
-            div = parseInt(num1) / parseInt(num2);
-            document.getElementById("result").value = div;
-        }
-
-        function clearData(){
-            document.getElementById("n1").value = "";
-            document.getElementById("n2").value = "";
-            document.getElementById("result").value = "";
-            document.getElementById("about").innerHTML = "";
-        }
-
-        function About(){
-            document.getElementById("about").innerHTML = alert("Work of Espinar Stephen Jay C");
-        }
     </script>
-    <div class="calculator">
+    <div class="OrderInterface">
+        <div class="ProductField">
+            <table>
+                <tr id="AddMinusBtn">
+                    <td>Basketball Products: </td>
+                    <td><input type="text" size="2" id="items"></td>
+                    <td><button onclick="Increment()" id="increment">+</button></td>
+                    <td><button onclick="Decrement()" id="decrement">-</button></td>
+                </tr>
 
-        <table>
-            <tr>
-                <td>First Number:</td>
-                <td><input type="text" size="10" id="n1"></td>
-            </tr>
-            <tr>
-                <td>Second Number:</td>
-                <td><input type="text" size="10" id="n2"></td>
-            </tr>
-            <tr>
-                <td>RESULT:</td>
-                <td><input type="text" size="10" id="result" disabled></td>
-            </tr>
-        </table>
+                <tr>
+                    <td>Shipping and Handling Fee: </td>
+                    <td><input type="text" size="2" id="Sfee" placeholder="$4.99"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button id="btn" onclick="CheckOut()">Place Order</button></td>
+                </tr>
+            </table>
 
-        <button onclick="Addition()">Addition</button>
-            <button onclick="Subtraction()">Subtraction</button>
-            <button onclick="Multiplication()">Multiply</button>
-            <button onclick="Divide()">Divide</button>
-            <button onclick="clearData()">Clear</button>
-            <button onclick="About()">About</button>
+            <div class="CheckOut">
+                <table>
+                    <tr>
+                        <td><h2>Order Summary</h2></td>
+                    </tr>
+
+                    <tr>
+                        <td><p id="item"></p></td>
+                        <td id="total"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Shipping and handling: </td>
+                        <td id="SPfee"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Total before tax: </td>
+                        <td id="TotalBeforeTax"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Estimated tax (10%):</td>
+                        <td id="EstimatedTax"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Order total: </td>
+                        <td id="FinalTotal"></td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td><button id="btn2" onclick="DeleteData()">Cancel</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
 </body>
 </html>
